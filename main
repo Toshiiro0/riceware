@@ -640,18 +640,49 @@ end)
 
 local RageSection = AimingTab:CreateSector("Silent Aim", "left")
 local SilentAimToggle = RageSection:AddToggle('Silent Aim Enabled', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.WallCheck = Boolean
+local L_7_ = L_4_:NewTab("Silent Aim")
+local L_8_ = L_7_:NewSection("shiro.")
+L_8_:NewButton(
+    "Silent Aim",
+    "Silent Aim Toggle Key is [ .",
     function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/tayodevelup/imsoniac/main/silentaim", true))()
-end)
-
-local SilentAimFOVToggle = RageSection:AddToggle('Show FOV', false, function(Boolean)
-    PuppywareSettings.Aiming.TargetAim.ShowFOV = Boolean
-end)
-
-SilentAimFOVToggle:AddColorpicker(Color3.new(0.603921, 0.011764, 1), function(Color)
-    PuppywareSettings.Aiming.TargetAim.FOVColor = Color
-end)
+end
+)
+L_8_:NewTextBox(
+    "Silent Aim Prediction",
+    "0.157 for low ping 0.178 high ping",
+    function(L_72_arg0)
+	DaHoodSettings.Prediction = L_72_arg0
+end
+)
+L_8_:NewDropdown(
+    "Silent Aim Part",
+    "yes bro flash is cool",
+    {
+	"Head",
+	"UpperTorso",
+	"HumanoidRootPart",
+	"LowerTorso"
+},
+    function(L_73_arg0)
+	Aiming.TargetPart = L_73_arg0
+end
+)
+L_8_:NewTextBox(
+    "Silent Aim Fov",
+    "yes bro i am cool (flash)",
+    function(L_74_arg0)
+	Aiming.FOV = L_74_arg0
+end
+)
+L_8_:NewToggle(
+    "Silent Aim Show Fov",
+    "yea",
+    function(L_75_arg0)
+	Aiming.ShowFOV = L_75_arg0
+end
+)
 
 LegitSection:AddDropdown('Hitboxes', {"Head", "HumanoidRootPart"}, {"Head"}, true, function(Value)
     PuppywareSettings.Aiming.Aimbot.Hitboxes = Value
