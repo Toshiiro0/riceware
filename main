@@ -27,8 +27,8 @@ local SilentAimFOV = Drawing.new("Circle")
 SilentAimFOV.Thickness = 1
 local Insert = table.insert
 local Network = GetService.NetworkClient
-local PuppywareFolder = Instance.new("Folder", workspace)
-PuppywareFolder.Name = "PuppyWare-Folder"
+local ricewareFolder = Instance.new("Folder", workspace)
+ricewareFolder.Name = "riceware Folder"
 local StarterGui = GetService.StarterGui
 local ReplicatedStorage = GetService.ReplicatedStorage
 
@@ -448,7 +448,7 @@ local PuppywareSettings = {
     }
 }
 
-local PuppywareModule = {
+local ricewareModule = {
     Old = {
         CFrame,
     },
@@ -578,77 +578,77 @@ local PuppywareModule = {
     }
 }
 
-local Window = Library:CreateWindow("Puppyware", Vector2.new(492, 598), Enum.KeyCode.RightShift)
+local Window = Library:CreateWindow("riceware", Vector2.new(492, 598), Enum.KeyCode.RightShift)
 local AimingTab = Window:CreateTab("Aiming")
 
 -- Aimbot Setion --
 
 local LegitSection = AimingTab:CreateSector("Aimbot", "left")
 LegitSection:AddToggle('Enabled', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.Enabled = Boolean
+    ricewareSettings.Aiming.Aimbot.Enabled = Boolean
 end)
 
 local AimAssistToggle = LegitSection:AddToggle('Aim Assist', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.AimAssist = Boolean
+    ricewareSettings.Aiming.Aimbot.AimAssist = Boolean
 end)
 
 AimAssistToggle:AddKeybind()
 
 local AimbotFOVToggle = LegitSection:AddToggle('Show FOV', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.ShowFOV = Boolean
+    ricewareSettings.Aiming.Aimbot.ShowFOV = Boolean
 end)
 
-AimbotFOVToggle:AddColorpicker(PuppywareSettings.Aiming.Aimbot.FOVColor, function(Color)
-    PuppywareSettings.Aiming.Aimbot.FOVColor = Color
+AimbotFOVToggle:AddColorpicker(ricewareSettings.Aiming.Aimbot.FOVColor, function(Color)
+    ricewareSettings.Aiming.Aimbot.FOVColor = Color
 end)
 
 LegitSection:AddToggle('Use Nearest Distance', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.UseNearestDistance = Boolean
+    ricewareSettings.Aiming.Aimbot.UseNearestDistance = Boolean
 end)
 
 LegitSection:AddToggle('Wall Check', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.WallCheck = Boolean
+    ricewareSettings.Aiming.Aimbot.WallCheck = Boolean
 end)
 
 LegitSection:AddToggle('Knock Out Check', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.KnockedOutCheck = Boolean
+    ricewareSettings.Aiming.Aimbot.KnockedOutCheck = Boolean
 end)
 
 LegitSection:AddToggle('Grabbed Check', false, function(Boolean)
-    PuppywareSettings.Aiming.Aimbot.GrabbedCheck = Boolean
+    ricewareSettings.Aiming.Aimbot.GrabbedCheck = Boolean
 end)
 
 LegitSection:AddDropdown('Hitboxes', {"Head", "HumanoidRootPart"}, {"Head"}, true, function(Value)
-    PuppywareSettings.Aiming.Aimbot.Hitboxes = Value
+    ricewareSettings.Aiming.Aimbot.Hitboxes = Value
 end)
 
 -- Silent Aim Setion --
 
 local RageSection = AimingTab:CreateSector("Silent Aim", "left")
 local SilentAimToggle = RageSection:AddToggle('Silent Aim Enabled', false, function(Boolean)
-    PuppywareSettings.Aiming.SilentAim.Enabled = Boolean
+    ricewareSettings.Aiming.SilentAim.Enabled = Boolean
 end)
 
 SilentAimToggle:AddKeybind()
 
 local SilentAimFOVToggle = RageSection:AddToggle('Show FOV', false, function(Boolean)
-    PuppywareSettings.Aiming.SilentAim.ShowFOV = Boolean
+    ricewareSettings.Aiming.SilentAim.ShowFOV = Boolean
 end)
 
 SilentAimFOVToggle:AddColorpicker(Color3.new(0.603921, 0.011764, 1), function(Color)
-    PuppywareSettings.Aiming.SilentAim.FOVColor = Color
+    ricewareSettings.Aiming.SilentAim.FOVColor = Color
 end)
 
 RageSection:AddToggle('Use Nearest Distance', false, function(Boolean)
-    PuppywareSettings.Aiming.SilentAim.NearestDistance = Boolean
+    ricewareSettings.Aiming.SilentAim.NearestDistance = Boolean
 end)
 
 RageSection:AddToggle('Wall Check', false, function(Boolean)
-    PuppywareSettings.Aiming.SilentAim.WallCheck = Boolean
+    ricewareSettings.Aiming.SilentAim.WallCheck = Boolean
 end)
 
 RageSection:AddToggle('Knock Out Check', false, function(Boolean)
-    PuppywareSettings.Aiming.SilentAim.KnockedOutCheck = Boolean
+    ricewareSettings.Aiming.SilentAim.KnockedOutCheck = Boolean
 end)
 
 RageSection:AddToggle('Grabbed Check', false, function(Boolean)
@@ -711,23 +711,6 @@ AimbotFOVSection:AddSlider("FOV Transparency", 0, 9, 9, 1, function(Value)
     PuppywareSettings.Aiming.FOV.Transparency = tonumber("0." .. Value)
 end)
 
--- Trigger Bot Section -- 
-
-local TriggerbotSection = AimingTab:CreateSector("Trigger Bot", "left")
-
-local TriggerBotToggle = TriggerbotSection:AddToggle('Trigger Bot Enabled', false, function(State)
-    PuppywareSettings.Aiming.TriggerBot.Enabled = State
-end)
-
-TriggerBotToggle:AddKeybind()
-
-local TValue = TriggerbotSection:AddToggle('Trigger Bot Delay (ms)', false, function(State)
-    PuppywareSettings.Aiming.TriggerBot.Delay = State
-end)
-
-TValue:AddSlider(1, 0, 60, 1, function(Value)
-    PuppywareSettings.Aiming.TriggerBot.DelayAmount = Value
-end)
 
 -- Aiming Settings Section --
 
@@ -779,7 +762,7 @@ end, function()
             PuppywareSettings.Aiming.TargetAim.Target = NearestTarget.Name
             if PuppywareSettings.Aiming.TargetAimSettings.NotificationAlert then
                 Notify({
-                    Title = "Puppyware 😳",
+                    Title = "riceware",
                     Description = "Target: " .. NearestTarget.Name,
                     Duration = 3
                 })
@@ -807,7 +790,7 @@ WhitelistSection:AddTextbox("Username", nil, function(Text)
         PuppywareSettings.Aiming.Whitelist.Holder = Find(Text)
     else
         Notify({
-            Title = "Puppyware",
+            Title = "riceware",
             Description = "Player is not found.",
             Duration = 3
         })
@@ -832,7 +815,7 @@ WhitelistSection:AddButton('Add', function(State)
         end
     else
         Notify({
-            Title = "Puppyware",
+            Title = "riceware",
             Description = "Player is not found.",
             Duration = 3
         })
@@ -844,20 +827,20 @@ WhitelistSection:AddButton('Remove', function()
         if table.find(PuppywareSettings.Aiming.Whitelist.Players, PuppywareSettings.Aiming.Whitelist.Holder) then
             Remove(PuppywareSettings.Aiming.Whitelist.Players, PuppywareSettings.Aiming.Whitelist.Holder)
             Notify({
-                Title = "Puppyware",
+                Title = "riceware",
                 Description = "Removed " .. PuppywareSettings.Aiming.Whitelist.Holder,
                 Duration = 5
             })
         else
             Notify({
-                Title = "Puppyware",
+                Title = "riceware",
                 Description = PuppywareSettings.Aiming.Whitelist.Holder .. " is not whitelisted.",
                 Duration = 5
             })
         end
     else
         Notify({
-            Title = "Puppyware",
+            Title = "riceware",
             Description = "Player is not found.",
             Duration = 3
         })
@@ -872,164 +855,7 @@ WhitelistSection:AddToggle('Friends Whitelist', false, function(State)
     PuppywareSettings.Aiming.Whitelist.FriendsWhitelist = State
 end)
 
--- Visuals Window --
---[[
-    
-local VisualsTab = Window:CreateTab("Visuals")
-local ESPSection = VisualsTab:CreateSector("ESP", "left")
 
-local ESPToggle = ESPSection:AddToggle('ESP Enabled', false, function(Boolean)
-    
-end)
-
-ESPToggle:AddKeybind()
-
-ESPSection:AddToggle('Box ESP', false, function(Boolean)
-    
-end)
-
-ESPSection:AddToggle('Tracer ESP', false, function(Boolean)
-    
-end)
-
-ESPSection:AddToggle('Name ESP', false, function(Boolean)
-    
-end)
-
-ESPSection:AddToggle('Health Bar', false, function(Boolean)
-    
-end)
-
-ESPSection:AddToggle('Armor Bar', false, function(Boolean)
-    
-end)
-
-ESPSection:AddToggle("Wall Check", false, function()
-
-end)
-
-local LocalSection = VisualsTab:CreateSector("Local", "left")
-
-local FOVToggle = LocalSection:AddToggle('FOV Changer', false, function(State)
-
-end)
-
-FOVToggle:AddSlider(70, 90, 120, 1, function(Value)
-    
-end)
-
-local SelfChamToggle = LocalSection:AddToggle('Self Cham', false, function(State)
-
-end)
-
-SelfChamToggle:AddColorpicker(Color3.fromRGB(255, 255, 255), function()
-
-end)
-
-SelfChamToggle:AddDropdown({}, "Ghost", false, function(Option)
-    
-end)
-
-local FakeLagChamToggle = LocalSection:AddToggle('Fake Lag Cham', false, function(State)
-
-end)
-
-FakeLagChamToggle:AddColorpicker(Color3.fromRGB(255, 255, 255), function()
-
-end)
-
-local CrosshairSection = VisualsTab:CreateSector("Drawing Crosshair", "left")
-
-local DrawingCrosshairToggle = CrosshairSection:AddToggle("Crosshair Enabled", false, function()
-
-end)
-
-DrawingCrosshairToggle:AddColorpicker(Color3.fromRGB(255, 255, 255), function()
-
-end)
-
-CrosshairSection:AddSlider("Gap", 0, 1, 5, 1, function(Value)
-    
-end)
-
-CrosshairSection:AddSlider("Size", 0, 3, 10, 1, function(Value)
-    
-end)
-
-local MiscSection = VisualsTab:CreateSector("Misc", "left")
-
-MiscSection:AddToggle("No Flashbag", false, function()
-
-end)
-
-MiscSection:AddToggle("No Recoil", false, function()
-
-end)
-
-local WorldSection = VisualsTab:CreateSector("World", "right")
-
-WorldSection:AddToggle("Better Shadow", false, function()
-
-end)
-
-WorldSection:AddToggle("FullBright", false, function()
-
-end)
-
-local GridiantToggle = WorldSection:AddToggle("Gradiant", false, function()
-
-end)
-
-GridiantToggle:AddColorpicker(Color3.fromRGB(255, 255, 255), function()
-
-end)
-
-GridiantToggle:AddColorpicker(Color3.fromRGB(255, 255, 255), function()
-
-end)
-
-local SaturationToggle = WorldSection:AddToggle("Saturation", false, function()
-
-end)
-
-SaturationToggle:AddSlider(-10, 0, 10, 1, function(Value)
-    
-end)
-
-local BrightnessToggle = WorldSection:AddToggle("Brightness", false, function()
-
-end)
-
-BrightnessToggle:AddSlider(-10, 0, 10, 1, function(Value)
-    
-end)
-
-local ContrastToggle = WorldSection:AddToggle("Contrast", false, function()
-
-end)
-
-ContrastToggle:AddSlider(-10, 0, 10, 1, function(Value)
-    
-end)
-
-local ESPSettings = VisualsTab:CreateSector("ESP Settings", "right")
-
-ESPSettings:AddDropdown('Font', {}, "Plex", false, function(Option)
-    
-end)
-
-ESPSettings:AddDropdown('Text Case', {"Normal", "Uppercase", "Lowercase"}, "Lowercase", false, function(Option)
-    
-end)
-
-ESPSettings:AddToggle("Unlock Tracers", false, function()
-
-end)
-
-ESPSettings:AddSlider("Text Size", 5, 14, 20, 1, function(Value)
-    
-end)
-]]
 
 -- Blatant Tab --
 
@@ -1560,81 +1386,6 @@ RadioSector:AddButton("Stop", function()
 
 end)
 
-local KillInsultsSector = MiscellaneousTab:CreateSector("Kill Insults", "right")
-
-KillInsultsSector:AddToggle("Kill Insults Enabled", false, function()
-
-end)
-
-KillInsultsSector:AddToggle("Custom Message", false, function()
-
-end)
-
-KillInsultsSector:AddSlider("Delay (ms)", 0, 0, 5, 1, function(Value)
-    
-end)
-
-KillInsultsSector:AddDropdown("Messages", {}, "", false, function()
-
-end)
-
-KillInsultsSector:AddTextbox("Message", "@Username is bad.", function(Text)
-    
-end)
-
-KillInsultsSector:AddButton("Add", function()
-
-end)
-
-KillInsultsSector:AddButton("Remove", function()
-
-end)
-
-local CustomModelSector = MiscellaneousTab:CreateSector("Custom Model", "right")
-
-CustomModelSector:AddToggle("Custom Model Enabled", false, function()
-
-end)
-
-CustomModelSector:AddDropdown("Models", {"Among Us", "19$ Fortnite Card"}, "Among Us", false, function()
-
-end)
-
-CustomModelSector:AddToggle("Edit Mode", false, function()
-
-end)
-
-CustomModelSector:AddSlider("Position X", 0, 0, 360, 1, function(Value)
-    
-end)
-
-CustomModelSector:AddSlider("Position Y", 0, 0, 360, 1, function(Value)
-    
-end)
-
-CustomModelSector:AddSlider("Position Z", 0, 0, 360, 1, function(Value)
-    
-end)
-
-CustomModelSector:AddSlider("Position Rotation", 0, 0, 360, 1, function(Value)
-    
-end)
-
-local ServerSector = MiscellaneousTab:CreateSector("Server", "left")
-
-ServerSector:AddLabel("Crashing Rate: 0%")
-
-ServerSector:AddToggle("Server Crash", false, function()
-
-end)
-
-ServerSector:AddButton("Rejoin", function()
-
-end)
-
-ServerSector:AddButton("Server Hop", function()
-
-end)
 
 local PanicSector = MiscellaneousTab:CreateSector("Panic", "right")
 
@@ -1655,7 +1406,7 @@ if syn then
     SettingsTab:CreateConfigSystem("left")
 else
     Notify({
-        Title = "Puppyware",
+        Title = "riceware",
         Description = "Your Executor Doesn't Support Config.",
         Duration = 3
     })
