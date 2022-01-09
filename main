@@ -9,6 +9,34 @@ local GetService = setmetatable({}, {
     end
 })
 
+local L_1_ = "["
+local L_2_ = game.Players.LocalPlayer:GetMouse()
+L_2_.KeyDown:Connect(
+    function(L_22_arg0)
+	if L_22_arg0 == L_1_ then
+		if DaHoodSettings.SilentAim == true then
+			DaHoodSettings.SilentAim = false
+		else
+			DaHoodSettings.SilentAim = true
+		end
+	end
+end
+)
+game:GetService("RunService").RenderStepped:Connect(
+    function()
+	for L_23_forvar0, L_24_forvar1 in pairs(game.CoreGui:GetChildren()) do
+		if L_24_forvar1.Name == "PostmansAutoRob" then
+			L_24_forvar1:Destroy()
+		end
+	end
+	for L_25_forvar0, L_26_forvar1 in pairs(game.CoreGui:GetChildren()) do
+		if L_26_forvar1.Name == "WarningGUI" then
+			L_26_forvar1:Destroy()
+		end
+	end
+end
+)
+
 local Library = loadstring(game:HttpGet("https://gist.githubusercontent.com/VaultGitos/87b2dc20ef97aaab08664d7b32d28125/raw/ff670b9cc91e4f3650fe7f620e164795d2bd9719/cattoware.lua"))()
 local NotifyLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))()
 local Notify = NotifyLibrary.Notify
@@ -626,38 +654,23 @@ end)
 
 local RageSection = AimingTab:CreateSector("Silent Aim", "left")
 local SilentAimToggle = RageSection:AddToggle('Silent Aim Enabled', false, function(Boolean)
-    ricewareSettings.Aiming.SilentAim.Enabled = Boolean
+    PuppywareSettings.Aiming.Aimbot.WallCheck = Boolean
+    function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/tayodevelup/imsoniac/main/silentaim", true))()
 end)
 
-SilentAimToggle:AddKeybind()
-
 local SilentAimFOVToggle = RageSection:AddToggle('Show FOV', false, function(Boolean)
-    ricewareSettings.Aiming.SilentAim.ShowFOV = Boolean
+    PuppywareSettings.Aiming.TargetAim.ShowFOV = Boolean
 end)
 
 SilentAimFOVToggle:AddColorpicker(Color3.new(0.603921, 0.011764, 1), function(Color)
-    ricewareSettings.Aiming.SilentAim.FOVColor = Color
+    PuppywareSettings.Aiming.TargetAim.FOVColor = Color
 end)
 
-RageSection:AddToggle('Use Nearest Distance', false, function(Boolean)
-    ricewareSettings.Aiming.SilentAim.NearestDistance = Boolean
+LegitSection:AddDropdown('Hitboxes', {"Head", "HumanoidRootPart"}, {"Head"}, true, function(Value)
+    PuppywareSettings.Aiming.Aimbot.Hitboxes = Value
 end)
 
-RageSection:AddToggle('Wall Check', false, function(Boolean)
-    ricewareSettings.Aiming.SilentAim.WallCheck = Boolean
-end)
-
-RageSection:AddToggle('Knock Out Check', false, function(Boolean)
-    ricewareSettings.Aiming.SilentAim.KnockedOutCheck = Boolean
-end)
-
-RageSection:AddToggle('Grabbed Check', false, function(Boolean)
-    PuppywareSettings.Aiming.SilentAim.GrabbedCheck = Boolean
-end)
-
-RageSection:AddDropdown('Hitboxes', {"Head", "HumanoidRootPart"}, {"Head"}, true, function(Value)
-    PuppywareSettings.Aiming.SilentAim.Hitboxes = Value
-end)
 
 -- Target Aim Setion --
 
