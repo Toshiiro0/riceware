@@ -22,20 +22,6 @@ L_2_.KeyDown:Connect(
 	end
 end
 )
-game:GetService("RunService").RenderStepped:Connect(
-    function()
-	for L_23_forvar0, L_24_forvar1 in pairs(game.CoreGui:GetChildren()) do
-		if L_24_forvar1.Name == "PostmansAutoRob" then
-			L_24_forvar1:Destroy()
-		end
-	end
-	for L_25_forvar0, L_26_forvar1 in pairs(game.CoreGui:GetChildren()) do
-		if L_26_forvar1.Name == "WarningGUI" then
-			L_26_forvar1:Destroy()
-		end
-	end
-end
-)
 
 local Library = loadstring(game:HttpGet("https://gist.githubusercontent.com/VaultGitos/87b2dc20ef97aaab08664d7b32d28125/raw/ff670b9cc91e4f3650fe7f620e164795d2bd9719/cattoware.lua"))()
 local NotifyLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))()
@@ -55,8 +41,8 @@ local SilentAimFOV = Drawing.new("Circle")
 SilentAimFOV.Thickness = 1
 local Insert = table.insert
 local Network = GetService.NetworkClient
-local ricewareFolder = Instance.new("Folder", workspace)
-ricewareFolder.Name = "riceware Folder"
+local PuppywareFolder = Instance.new("Folder", workspace)
+PuppywareFolder.Name = "Puppyware Folder"
 local StarterGui = GetService.StarterGui
 local ReplicatedStorage = GetService.ReplicatedStorage
 
@@ -476,7 +462,7 @@ local PuppywareSettings = {
     }
 }
 
-local ricewareModule = {
+local PuppywareModule = {
     Old = {
         CFrame,
     },
@@ -606,48 +592,48 @@ local ricewareModule = {
     }
 }
 
-local Window = Library:CreateWindow("riceware", Vector2.new(492, 598), Enum.KeyCode.RightShift)
+local Window = Library:CreateWindow("Puppyware", Vector2.new(492, 598), Enum.KeyCode.RightShift)
 local AimingTab = Window:CreateTab("Aiming")
 
 -- Aimbot Setion --
 
 local LegitSection = AimingTab:CreateSector("Aimbot", "left")
 LegitSection:AddToggle('Enabled', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.Enabled = Boolean
+    PuppywareSettings.Aiming.Aimbot.Enabled = Boolean
 end)
 
 local AimAssistToggle = LegitSection:AddToggle('Aim Assist', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.AimAssist = Boolean
+    PuppywareSettings.Aiming.Aimbot.AimAssist = Boolean
 end)
 
 AimAssistToggle:AddKeybind()
 
 local AimbotFOVToggle = LegitSection:AddToggle('Show FOV', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.ShowFOV = Boolean
+    PuppywareSettings.Aiming.Aimbot.ShowFOV = Boolean
 end)
 
-AimbotFOVToggle:AddColorpicker(ricewareSettings.Aiming.Aimbot.FOVColor, function(Color)
-    ricewareSettings.Aiming.Aimbot.FOVColor = Color
+AimbotFOVToggle:AddColorpicker(PuppywareSettings.Aiming.Aimbot.FOVColor, function(Color)
+    PuppywareSettings.Aiming.Aimbot.FOVColor = Color
 end)
 
 LegitSection:AddToggle('Use Nearest Distance', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.UseNearestDistance = Boolean
+    PuppywareSettings.Aiming.Aimbot.UseNearestDistance = Boolean
 end)
 
 LegitSection:AddToggle('Wall Check', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.WallCheck = Boolean
+    PuppywareSettings.Aiming.Aimbot.WallCheck = Boolean
 end)
 
 LegitSection:AddToggle('Knock Out Check', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.KnockedOutCheck = Boolean
+    PuppywareSettings.Aiming.Aimbot.KnockedOutCheck = Boolean
 end)
 
 LegitSection:AddToggle('Grabbed Check', false, function(Boolean)
-    ricewareSettings.Aiming.Aimbot.GrabbedCheck = Boolean
+    PuppywareSettings.Aiming.Aimbot.GrabbedCheck = Boolean
 end)
 
 LegitSection:AddDropdown('Hitboxes', {"Head", "HumanoidRootPart"}, {"Head"}, true, function(Value)
-    ricewareSettings.Aiming.Aimbot.Hitboxes = Value
+    PuppywareSettings.Aiming.Aimbot.Hitboxes = Value
 end)
 
 -- Silent Aim Setion --
